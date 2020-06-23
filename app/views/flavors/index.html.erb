@@ -1,7 +1,6 @@
 <div class="wrapper">
     <div class="flavors-pagination-wrapper">
         <div class="flavors-wrapper">
-			<p>hello world</p>
             <% @flavors.each do |flavor| %>
                 <div class="flavor">
                     <%= link_to image_tag(@status_image[flavor.status]), edit_flavor_path(flavor), remote: true, class: "StatusImage" %>
