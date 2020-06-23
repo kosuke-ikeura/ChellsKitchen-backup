@@ -1,0 +1,82 @@
+
+
+[
+    {
+        "name": "nginx",
+        "image": "807363467264.dkr.ecr.ap-northeast-1.amazonaws.com/ck-ecr-nginx",
+        "essential": true,
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "nginx",
+                "awslogs-group": "/ecs/chellskitchen-logs"
+            }
+        },
+        "portMappings": [
+            {
+                "protocol": "tcp",
+                "containerPort": 80
+            }
+        ],
+		"mountPoints":[
+			{
+				"sourceVolume": "sockets-database",
+				"containerPath": "/chells-kitchen/tmp/sockets"
+			}
+		],
+        "command": ["/usr/sbin/nginx", "-g", "daemon off;", "-c", "/etc/nginx/nginx.conf"]
+    },
+    {
+        "name": "rails",
+        "image": "807363467264.dkr.ecr.ap-northeast-1.amazonaws.com/ck-ecr-rails",
+        "essential": true,
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "rails",
+                "awslogs-group": "/ecs/chellskitchen-logs"
+            }
+        },
+        "portMappings":[
+                {
+                "protcol": "tcp",
+                "containerPort": 3000
+            }
+        ],
+		"mountPoints": [
+			{
+				"sourceVolume": "sockets-database",
+				"containerPath": "/chells-kitchen/tmp/sockets"
+			}
+		],
+        "command": ["bundle", "exec", "puma", "-C", "config/puma.rb"],
+        "environment": [
+            {
+                "name": "RAILS_ENV",
+                "value": "development"
+            },
+            {
+                "name": "DB_HOST",
+                "value": "ck-rds.cgykkbi9dwwv.ap-northeast-1.rds.amazonaws.com"
+            },
+            {
+                "name": "DB_USERNAME",
+                "value": "root"
+            },
+            {
+                "name": "DB_PASSWORD",
+                "value": "Ko03260326"
+            },
+            {
+                "name": "DB_DATABASE",
+                "value": "chells-kitchen"
+            },
+            {
+                "name": "RAILS_MASTER_KEY",
+                "value": "eda5852063fa921f772fdb89db1f5f5e"
+            }
+        ]
+    }
+]

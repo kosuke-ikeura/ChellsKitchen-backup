@@ -1,0 +1,92 @@
+[
+    {
+        "name": "nginx",
+        "image": "807363467264.dkr.ecr.ap-northeast-1.amazonaws.com/ck-ecr-nginx",
+        "essential": true,
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "nginx",
+                "awslogs-group": "/ecs/chellskitchen-logs"
+            }
+        },
+        "portMappings": [
+            {
+                "protocol": "tcp",
+                "containerPort": 80
+            }
+        ],
+        "mountPoints": [
+            {
+                "sourceVolume": "sockets-database",
+                "containerPath": "/chells-kitchen/tmp/sockets"
+            }
+        ],
+        "command": [
+            "/usr/sbin/nginx",
+            "-g",
+            "daemon off;",
+            "-c",
+            "/etc/nginx/nginx.conf"
+        ]
+    },
+    {
+        "name": "rails",
+        "image": "807363467264.dkr.ecr.ap-northeast-1.amazonaws.com/ck-ecr-rails",
+        "essential": true,
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-region": "ap-northeast-1",
+                "awslogs-stream-prefix": "rails",
+                "awslogs-group": "/ecs/chellskitchen-logs"
+            }
+        },
+        "portMappings": [
+            {
+                "protcol": "tcp",
+                "containerPort": 3000
+            }
+        ],
+        "mountPoints": [
+            {
+                "sourceVolume": "sockets-database",
+                "containerPath": "/chells-kitchen/tmp/sockets"
+            }
+        ],
+        "command": [
+            "bundle",
+            "exec",
+            "puma",
+            "-C",
+            "config/puma.rb"
+        ],
+        "environment": [
+            {
+                "name": "RAILS_ENV",
+                "value": "development"
+            },
+            {
+                "name": "DB_HOST",
+                "value": "${db_host}"
+            },
+            {
+                "name": "DB_USERNAME",
+                "value": "${db_username}"
+            },
+            {
+                "name": "DB_PASSWORD",
+                "value": "${db_password}"
+            },
+            {
+                "name": "DB_DATABASE",
+                "value": "${db_database}"
+            },
+            {
+                "name": "RAILS_MASTER_KEY",
+                "value": "${rails_master_key}"
+            }
+        ]
+    }
+]

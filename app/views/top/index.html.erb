@@ -1,0 +1,62 @@
+<div>
+    <div id="main-image">
+        <h2><span style="color: #cc2931">Chells Kitchen</span>は<br>キッチンの調味料の<br>調整をするサービスです。</h2>
+    </div>
+    <div class="wrapper">
+    <section>
+        <div class="section1 section">
+            <div class="number">
+                <%= image_tag '01.png', class: "number-image" %>
+                <div class="text">
+                    <h2 class="text-title">どこでも調味料の状態が<br>わかります</h2>
+                    <p class="text-p">調味料が切れそうならChells-Kitchenを利用しよう。<br>
+                    Web上で調味料を更新すれば、寮生に通知が入ります。<br>
+                    外出中の寮生に買ってきてもらいましょう。
+                    </p>
+                </div>
+            </div>
+            <div class="image">
+                <%= image_tag "iphone.png" %>
+            </div>
+        </div>
+        <div class="section2 section">
+            <div class="number">
+                <%= image_tag '02.png', class: "number-image" %>
+                <div class="text02">
+                    <h2 class="text-title">レシートいらず、写真で送ろう。</h2>
+                    <p class="text-p">返金にレシートが必要でした。<br>
+                    Chells-Kitchenではレシートの必要はありません。<br>
+                    調味料を買ったらレシートの写真を撮って<br>
+                    webにあげましょう。<br>
+                    そうすればお金が返ってきます。
+                    </p>
+                </div>
+            </div>
+            <div class="image">
+                <%= image_tag "send.png" %>
+            </div>
+        </div>
+        <div class="section3 section">
+            <div class="number">
+                <%= image_tag '03.png', class: "number-image" %>
+                <div class="text02">
+                    <h2 class="text-title">キッチンでの<br>コミュニケーションアップ</h2>
+                    <p class="text-p">調味料が不足している時、<br>
+                    調味料を誰かが購入した時、寮生に通知が入ります。<br>
+                    寮生が感謝を伝え合い、コミュニケーションが<br>
+                    増えることを製作者は期待しています。<br>
+                    みんな調味料買ってね。</p>
+                </div>
+            </div>
+            <div class="image">
+                <%= image_tag "suke.png" %>
+            </div>
+        </div>
+    </section>
+    <div class="try-use">
+        <%= link_to new_user_registration_path do %>
+            <%= image_tag "try-use.png" %>
+        <% end %>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,2 @@
+GRANT ALL PRIVILEGES ON *.* TO 'chells-kitchen'@'%';
+FLUSH PRIVILEGES;

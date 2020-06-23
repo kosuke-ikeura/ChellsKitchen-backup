@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="resistration-wrapper">
+    <h2>ログイン</h2>
+    <div class="form-wrapper">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <table class="form-table">
+          <tbody>
+            <%= render "devise/shared/error_messages", resource: resource %>
+              <tr>
+                <th>メールアドレス</th>
+                <td><%= f.email_field :email, autofocus: true, placeholder: "mitekurete@arigatou.com" %></td>
+              </tr>
+              <tr>
+                <th>パスワード</th>
+                <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+              </tr>
+            </tbody>
+        </table>
+            <div class="submit-wrapper">
+              <div class="action-wrapper">
+                <%= f.submit "ログイン", class: "action" %>
+              </div>
+              <div class="action-wrapper">
+                <%= render "devise/sessions/testuser"%>
+              </div>
+            </div>
+      <% end %>
+    </div>
+  </div>
+</div>

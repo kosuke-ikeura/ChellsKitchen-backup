@@ -1,0 +1,35 @@
+<div class="modal__bg js-modal-close">
+   <div class="modal__content">
+   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+   </button>
+      <%= form_with(model: @flavor, local: true) do |form| %>
+      <div class="modal-header">
+        <h5 class="modal-title">ステータスを変更</h5>
+      </div>
+      <div class="modal-body">
+            <div class="form-group field">
+               <div class="modal_explanation">
+                  <div class="urn">
+                     <%= image_tag ('urn_red.png')%>
+                     <p>1</p>
+                  </div>
+                  <div class="urn">
+                     <%= image_tag ('urn_yellow.png')%>
+                     <p>2</p>
+                  </div>
+                  <div class="urn">
+                     <%= image_tag ('urn_blue.png')%>
+                     <p>3</p>
+                  </div>
+               </div>
+               <%= form.select :status, [1,2,3] %>
+            </div>
+      </div>
+         <div class="modal-footer actions">
+            <%= form.submit "アップデート", class: "update-button" %>
+            <%= link_to "購入", new_flavor_path, class:"purchase-button" %>
+         </div>
+         <% end %>
+   </div>
+</div>

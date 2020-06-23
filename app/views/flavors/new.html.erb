@@ -1,0 +1,31 @@
+<div class="wrapper">
+    <div class="resistration-wrapper">
+        <h2>購入</h2>
+        <div class="form-wrapper">
+            <%= form_for(@flavor) do |f| %>
+            <table class="form-table">
+                <tbody>
+                    <tr>
+                        <th>調味料</th>
+                        <td><%= f.text_field :name %></td>
+                    </tr>
+                    <tr>
+                        <th>価格</th>
+                        <td><%= f.text_field :purchase_price %></td>
+                    </tr>
+                    <tr>
+                        <th>レシート</th>
+                        <td><%= f.file_field :image %></td>
+                    </tr>
+
+                </tbody>
+            </table>
+                <div class="submit-wrapper">
+                    <div class="action-wrapper">
+                        <%= f.submit "Send", class: "action" %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

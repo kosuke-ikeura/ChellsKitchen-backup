@@ -1,0 +1,7 @@
+<% @flavors.each do |flavor| %>
+   <%= flavor.name %>
+   <% if flavor.image? %>
+      <%= image_tag flavor.image.url %>
+   <% end %>
+   <%= flavor.created_at.strftime('%Y/%m/%d') %>
+<% end %>

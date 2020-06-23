@@ -1,0 +1,23 @@
+inherit_from: .rubocop_todo.yml
+
+
+Style/VariableNumber:
+  EnforcedStyle: snake_case
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MixinUsage:
+  Description: 'Checks that `include`, `extend` and `prepend` exists at the top level.'
+  Enabled: true
+  Exclude:
+    - 'bin/**/*'
+
+Layout/LineLength:
+  Max: 154
+
+Style/AsciiComments:
+  Enabled: false
