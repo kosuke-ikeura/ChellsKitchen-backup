@@ -55,5 +55,11 @@ jobs:
           destination: test-results
 
       - run:
+<<<<<<< HEAD
           name: run rubocop
           command: bundle exec rubocop
+=======
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
+>>>>>>> 7c2554dea0afbfc4423afc02b84ddbafdde96fa4
